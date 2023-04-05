@@ -44,10 +44,10 @@ class UserAccount {
             ArrayList<String> accounts = new ArrayList<String>();
             ArrayList<String> acctDetails = new ArrayList<String>();
 
-            File file = new File("accounts.txt");
+            File file = new File("data/accounts.txt");
             Scanner fr = new Scanner(file);
 
-            File file2 = new File("acctDetails.txt");
+            File file2 = new File("data/acctDetails.txt");
             Scanner fr2 = new Scanner(file2);
             int i = 0;
 

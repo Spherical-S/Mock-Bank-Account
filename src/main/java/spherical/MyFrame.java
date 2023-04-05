@@ -403,7 +403,6 @@ class MyFrame extends JFrame implements ActionListener{
 
     public void displayOpenedSavings(){
         user.accounts.add(new Bank(user.ID, "1", false, 0));
-        Database.save(user);
         MyPanel topPanel = new MyPanel(50, 690, Color.GRAY);
 
         JLabel title = new JLabel("Open New Account");
@@ -426,7 +425,6 @@ class MyFrame extends JFrame implements ActionListener{
 
     public void displayOpenedChequing(){
         user.accounts.add(new Bank(user.ID, "2", false, 0));
-        Database.save(user);
         MyPanel topPanel = new MyPanel(50, 690, Color.GRAY);
 
         JLabel title = new JLabel("Open New Account");
@@ -645,11 +643,9 @@ class MyFrame extends JFrame implements ActionListener{
 
         if (depositAccount == "1"){
             depositMessage.setText("New balance: "+ String.valueOf(user.accounts.get(savingsIndex).deposit(user.ID, amount)));
-            Database.save(user);
         }
         if (depositAccount == "2"){
             depositMessage.setText("New balance: "+ String.valueOf(user.accounts.get(chequingIndex).deposit(user.ID, amount)));
-            Database.save(user);
         }
 
     }
@@ -700,7 +696,6 @@ class MyFrame extends JFrame implements ActionListener{
                 withdrawMessage.setText("Cannot withdraw more than you own. ("+user.accounts.get(savingsIndex).balance+")");
             }else{
                 withdrawMessage.setText("Withdraw successful. New balance: "+user.accounts.get(savingsIndex).withdraw(user.ID, amount));
-                Database.save(user);
             }
         }
 
@@ -709,7 +704,6 @@ class MyFrame extends JFrame implements ActionListener{
                 withdrawMessage.setText("Cannot withdraw more than you own. ("+user.accounts.get(chequingIndex).balance+")");
             }else{
                 withdrawMessage.setText("Withdraw successful. New balance: "+user.accounts.get(chequingIndex).withdraw(user.ID, amount));
-                Database.save(user);
             }
         }
 
@@ -730,7 +724,7 @@ class MyFrame extends JFrame implements ActionListener{
     public void getAccounts(){
         try{
 
-            File file = new File("accounts.txt");
+            File file = new File("data/accounts.txt");
             Scanner fileReader = new Scanner(file);
 
             while (fileReader.hasNextLine()){
@@ -766,7 +760,6 @@ class MyFrame extends JFrame implements ActionListener{
 
         if (e.getSource() == confirmSignUp){
             user = new UserAccount(false, "", firstEntry.getText(), lastEntry.getText());
-            Database.save(user);
             interaction.removeAll();
             displayHomeScreen();
         }
@@ -784,7 +777,6 @@ class MyFrame extends JFrame implements ActionListener{
         if (e.getSource() == saveName){
             user.firstName = newFirst.getText();
             user.lastName = newLast.getText();
-            Database.save(user);
             interaction.removeAll();
             displayAccountDetails();
         }

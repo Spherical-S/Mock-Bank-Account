@@ -25,7 +25,7 @@ class Database {
     //saves an existing account
     public static void saveAccount(UserAccount user, ArrayList<String> accounts, ArrayList<String> acctDetails){
         try{
-            FileWriter fw = new FileWriter("acctDetails.txt");
+            FileWriter fw = new FileWriter("data/acctDetails.txt");
             String userDetails = String.valueOf(user.acctBalance("1")) + ", " + String.valueOf(user.acctBalance("2")) + ", " + user.firstName + ", " + user.lastName;
             String allUserDetails = "";
             int userIndex = -1;
@@ -59,8 +59,8 @@ class Database {
     //adds a new account to the save files
     public static void saveNewAccount(UserAccount user){
         try{
-            FileWriter fw = new FileWriter("accounts.txt", true);
-            FileWriter fw2 = new FileWriter("acctDetails.txt", true);
+            FileWriter fw = new FileWriter("data/accounts.txt", true);
+            FileWriter fw2 = new FileWriter("data/acctDetails.txt", true);
 
             String acctDetails = String.valueOf(user.acctBalance("1")) + ", " + String.valueOf(user.acctBalance("2")) + ", " + user.firstName + ", " + user.lastName;
 
@@ -76,7 +76,7 @@ class Database {
     public static ArrayList<String> userList(){
         ArrayList<String> accounts = new ArrayList<String>();
         try{
-            File file = new File("accounts.txt");
+            File file = new File("data/accounts.txt");
             Scanner fr = new Scanner(file);
 
             while(fr.hasNextLine()){
@@ -93,7 +93,7 @@ class Database {
     public static ArrayList<String> userDetails(){
         ArrayList<String> accounts = new ArrayList<String>();
         try{
-            File file = new File("acctDetails.txt");
+            File file = new File("data/acctDetails.txt");
             Scanner fr = new Scanner(file);
 
             while(fr.hasNextLine()){
